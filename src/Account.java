@@ -3,10 +3,15 @@ import java.util.Date;
 public class Account {
     private String cardNumber;
     private String pinCode;
+    private int balance;
 
-    public Account(String cardNumber, String pinCode) {
+
+    public Account() {}
+
+    public Account(String cardNumber, String pinCode, int balance) {
         this.cardNumber = cardNumber;
         this.pinCode = pinCode;
+        this.balance = balance;
     }
 
     public String getCardNumber() {
@@ -23,5 +28,22 @@ public class Account {
 
     public void setPinCode(String pinCode) {
         this.pinCode = pinCode;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "cardNumber='" + cardNumber + '\'' +
+                ", pinCode='" + pinCode + '\'' +
+                ", balance=" + balance +
+                '}';
     }
 }

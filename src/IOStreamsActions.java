@@ -1,29 +1,14 @@
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class IOStreamsActions {
 
-    DataBase dataBase;
-
-    public DataBase getDataBase() {
-        return dataBase;
+    public String scannerSystemIn() {
+        Scanner scanner;
+        scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
-    public Scanner scannerFile() {
-        Scanner scanner = null;
-        try {
-             scanner = new Scanner(getDataBase().getFile());
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        } return scanner;
-    }
-
-    public Scanner scannerSystemIn() {
-        return new Scanner(System.in);
-    }
-
-
-
-
 
 
 }
