@@ -9,22 +9,8 @@ import java.util.Scanner;
 public class DataBase {
     public static List<Account> dataBaseList = new ArrayList<>();
 
-    private String fileAddress = "src\\testDataBase.txt";
-    IOStreamsActions ioStreamsActions;
-
-    public DataBase() {
-    }
-
-    public String getFileAddress() {
-        return fileAddress;
-    }
-
-    public File getFile() {
-        return new File(getFileAddress());
-    }
-
     public void writeToFile() {
-        File file = new File(getFileAddress());
+        File file = new File("src\\testDataBase.txt");
         try (PrintWriter printWriter = new PrintWriter(file)) {
             for (Account account : dataBaseList) {
                 printWriter.println(account.getCardNumber() + " "
@@ -37,22 +23,17 @@ public class DataBase {
     }
 
     public void readFromFile() {
-        File file = new File(getFileAddress());
+        File file = new File("src\\testDataBase.txt");
         try (Scanner scanner = new Scanner(file)) {
-        while (scanner.hasNextLine()) {
-            String lineFromFile = scanner.nextLine();
-            String[] arrayFromFile = lineFromFile.split(" ");
-            dataBaseList.add(new Account(arrayFromFile[0],
-                    arrayFromFile[1],
-                    Integer.parseInt(arrayFromFile[2])));
+            while (scanner.hasNextLine()) {
+                String lineFromFile = scanner.nextLine();
+                String[] arrayFromFile = lineFromFile.split(" ");
+                dataBaseList.add(new Account(arrayFromFile[0],
+                        arrayFromFile[1],
+                        Integer.parseInt(arrayFromFile[2])));
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-
-    public void printList() {
-        System.out.println(dataBaseList);
-    }
-
 }
